@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Tachyons Playground</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="tachyons.min.css">
+<style>
+	.translate-center
+	{
+		transform: translate(-50%, -50%);
+	}
+	.t-50
+	{
+		top: 50%;
+	}
+	.l-50
+	{
+		left: 50%;
+	}
+</style>
+</head>
+<body class="sans-serif">
+		
+	<main class="pa2">
+		<h1>Tachyons Playground</h1>
+		
+		<button type="button" onclick="app.openDialog()"
+				class="js-open-dialog
+				dib mv1 pa1 ph3 h2 
+				b--black-80 black-80 bg-white bw1 ba
+				b pointer">
+			Open dialog
+		</button>
+		
+	</main>
+	
+	<div class="js-overlay
+	z-0
+	bg-gray o-50
+	fixed absolute--fill
+	t-0 l-0
+	dn"
+	onclick="app.closeDialog()">
+	</div>
+	
+	<div class="js-modal
+		z-1
+		b--black-80 black-80 bg-white bw1 ba
+		fixed t-50 l-50 translate-center w-90 w-50-ns h4
+		ma2 ph2
+		dn">
+		
+		<span class="fr f3 pointer" onclick="app.closeDialog()">&times;</span>
+		<h3 class="js-modal-title">Dialog Title</h3>
+		
+	</div>
+	
+	<script src="jquery-2.2.4.min.js"></script>
+	<script>
+	function App() {
+		me = this;
+		this.openDialog = function()
+		{
+			$('.js-overlay').show();
+			$('.js-modal').show();
+		}
+		this.closeDialog = function()
+		{
+			$('.js-overlay').hide();
+			$('.js-modal').hide();
+		}
+	}
+
+	var app;
+	$(function () {
+		app = new App();
+	});
+	</script>
+</body>
+</html>
